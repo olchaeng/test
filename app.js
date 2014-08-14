@@ -1,27 +1,8 @@
 var http = require('http');
 var qs = require('querystring');
 
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'root',
-  database : 'movie_app'
-});
+var dbHelper = require("./databaseHelper.js")
 
-connection.connect();
- 
-var queryString = 'SELECT * FROM member';
- 
-connection.query(queryString, function(err, rows, fields) {
-    if (err) throw err;
- 
-    for (var i in rows) {
-        console.log('name: ', rows[i].firstname);
-    }
-});
- 
-connection.end();
 
 http.createServer(function(request, response) {
   if (request.method == 'POST') {
@@ -39,6 +20,7 @@ http.createServer(function(request, response) {
             console.log(post);
             // use post['blah'], etc.
             response.writeHead(200, "OK", {'Content-Type': 'text/plain'});
+            dbHelper.insertUserInfo();
             response.end();
         });
     }
