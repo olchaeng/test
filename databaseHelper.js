@@ -9,17 +9,16 @@ var connection = mysql.createConnection({
 
 connection.connect();
  
-var queryString = 'SELECT * FROM member';
-
- 
-connection.query(queryString, function(err, rows, fields) {
-    if (err) throw err;
+exports.showUserInfo = function(data){
+    connection.query('SELECT * FROM member', function(err, rows, fields) {
+     if (err) throw err;
  
     for (var i in rows) {
-        console.log('name: ', rows[i].firstname);
+        console.log('name: ', rows[i].name);
     }
 });
- 
+}
+
  
 exports.insertUserInfo = function(data){
     connection.query('INSERT INTO member (name, age) VALUES (?,?)', [data.name, data.age], function(err, rows, fields) {

@@ -6,6 +6,8 @@ var dbHelper = require("./databaseHelper.js")
 
 http.createServer(function(request, response) {
   if (request.method == 'POST') {
+        console.log(request.headers);
+        
         var body = '';
         request.on('data', function (data) {
             body += data;
