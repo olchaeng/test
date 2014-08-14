@@ -3,7 +3,7 @@ var qs = require('querystring');
 
 var dbHelper = require("./databaseHelper.js")
 
-var url_insert = '/inserUser';
+var url_insert = '/insertUser';
 var url_show = '/showUserInfo';
 
 
@@ -43,7 +43,8 @@ http.createServer(function(request, response) {
             response.end();
        }
   }else{
-      
+      response.writeHead(200, "unexpected request", {'Content-Type': 'text/plain'});
+      response.end();
   }
     
   
