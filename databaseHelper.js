@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
 
 connection.connect();
  
-exports.showUserInfo = function(data){
+exports.showUserInfo = function(){
     connection.query('SELECT * FROM member', function(err, rows, fields) {
      if (err) throw err;
  

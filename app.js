@@ -3,11 +3,17 @@ var qs = require('querystring');
 
 var dbHelper = require("./databaseHelper.js")
 
+var url_insert = '/inserUser';
+var url_show = '/showUserInfo';
+
 
 http.createServer(function(request, response) {
-  if (request.method == 'POST') {
-        console.log(request.url);
-        console.log(request.trailers);
+    
+    
+  console.log('request url : ', request.url);
+
+  if(request.url == url_insert){
+      if (request.method == 'POST') {
         
         var body = '';
         request.on('data', function (data) {
@@ -29,6 +35,18 @@ http.createServer(function(request, response) {
             response.end();
         });
     }
+  }else if(request.url == url_show){
+       if (request.method == 'GET') {
+           
+            response.writeHead(200, "OK", {'Content-Type': 'text/plain'});
+            dbHelper.showUserInfo();
+            response.end();
+       }
+  }else{
+      
+  }
+    
+  
     
 }).listen(52273, function() {
   console.log('Server running');
