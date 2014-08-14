@@ -14,9 +14,9 @@ exports.showUserInfo = function(callback){
      if (err) throw err;
  
     callback(rows);
-    for (var i in rows) {
-        console.log('name: ', rows[i].name);
-    }
+    // for (var i in rows) {
+    //     console.log('name: ', rows[i].name);
+    // }
 });
 }
 
