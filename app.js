@@ -38,9 +38,25 @@ http.createServer(function(request, response) {
   }else if(request.url == url_show){
        if (request.method == 'GET') {
            
-            response.writeHead(200, "OK", {'Content-Type': 'text/plain'});
-            dbHelper.showUserInfo();
-            response.end();
+            response.writeHead(200, "OK", {'Content-Type': 'application/json'});
+            
+            var userData = {name:"name", age:"age"};
+            var member =[userData];
+            
+            dbHelper.showUserInfo(function(rows){
+                for (var i in rows) {
+                    userData.name =rows[i].name;
+                    userData.age =rows[i].age;
+                    // console.log('name: ', rows[i].name);
+                }
+            });
+            
+            
+            var json = JSON.stringify({ 
+                member: member, 
+                result: "success"
+            });
+            response.end(json);
        }
   }else{
       response.writeHead(200, "unexpected request", {'Content-Type': 'text/plain'});

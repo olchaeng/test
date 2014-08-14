@@ -9,10 +9,11 @@ var connection = mysql.createConnection({
 
 connection.connect();
  
-exports.showUserInfo = function(){
+exports.showUserInfo = function(callback){
     connection.query('SELECT * FROM member', function(err, rows, fields) {
      if (err) throw err;
  
+    callback(rows);
     for (var i in rows) {
         console.log('name: ', rows[i].name);
     }
