@@ -6,7 +6,8 @@ var dbHelper = require("./databaseHelper.js")
 
 http.createServer(function(request, response) {
   if (request.method == 'POST') {
-        console.log(request.headers);
+        console.log(request.url);
+        console.log(request.trailers);
         
         var body = '';
         request.on('data', function (data) {
@@ -16,6 +17,7 @@ http.createServer(function(request, response) {
             if (body.length > 1e6)
                 request.connection.destroy();
         });
+        
         request.on('end', function () {
             var post = qs.parse(body);
 
