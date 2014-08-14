@@ -22,7 +22,7 @@ connection.query(queryString, function(err, rows, fields) {
  
  
 exports.insertUserInfo = function(){
-    connection.query('INSERT INTO (name, age) VALUES ("대영",27)', function(err, rows, fields) {
+    connection.query('INSERT INTO member (name, age) VALUES ("대영",27)', function(err, rows, fields) {
     if (err) throw err;
  
     console.log('success insert query');
