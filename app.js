@@ -17,7 +17,7 @@ connection.query(queryString, function(err, rows, fields) {
     if (err) throw err;
  
     for (var i in rows) {
-        console.log('Post Titles: ', rows[i].post_title);
+        console.log('name: ', rows[i].firstname);
     }
 });
  
