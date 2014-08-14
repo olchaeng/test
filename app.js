@@ -17,14 +17,15 @@ http.createServer(function(request, response) {
         request.on('end', function () {
             var post = qs.parse(body);
 
-            console.log(post);
+            console.log('name : ', post.name);
+            console.log('age : ', post.age);
             // use post['blah'], etc.
             response.writeHead(200, "OK", {'Content-Type': 'text/plain'});
-            dbHelper.insertUserInfo();
+            dbHelper.insertUserInfo(post);
             response.end();
         });
     }
     
 }).listen(52273, function() {
-  console.log('Server running at '+process.env.IP+':52273/');
+  console.log('Server running');
 });

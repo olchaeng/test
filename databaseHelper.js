@@ -21,8 +21,8 @@ connection.query(queryString, function(err, rows, fields) {
 });
  
  
-exports.insertUserInfo = function(){
-    connection.query('INSERT INTO member (name, age) VALUES ("대영",27)', function(err, rows, fields) {
+exports.insertUserInfo = function(data){
+    connection.query('INSERT INTO member (name, age) VALUES (?,?)', [data.name, data.age], function(err, rows, fields) {
     if (err) throw err;
  
     console.log('success insert query');
