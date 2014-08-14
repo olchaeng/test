@@ -21,7 +21,7 @@ connection.query(queryString, function(err, rows, fields) {
 });
  
  
-var insertUserInfo = function(){
+exports.insertUserInfo = function(){
     connection.query('INSERT INTO (name, age) VALUES ("대영",27)', function(err, rows, fields) {
     if (err) throw err;
  
@@ -30,7 +30,7 @@ var insertUserInfo = function(){
 }
  
  
-var disconnectDB = function(){
+exports.disconnectDB = function(){
     connection.end();
 }
  
