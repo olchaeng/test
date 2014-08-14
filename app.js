@@ -49,16 +49,17 @@ http.createServer(function(request, response) {
                     // userData.name =rows[i].name;
                     // userData.age =rows[i].age;
                     // console.log('name: ', rows[i].name);
-                     console.log('name: ', rows[i].name);
+                    console.log('name: ', rows[i].name);
                     member.push(userData);
                 }
+                
+                var json = JSON.stringify({ 
+                    member: member, 
+                    result: "success"
+                });
+                response.end(json);
             });
             
-            var json = JSON.stringify({ 
-                member: member, 
-                result: "success"
-            });
-            response.end(json);
        }
   }else{
       response.writeHead(200, "unexpected request", {'Content-Type': 'text/plain'});
