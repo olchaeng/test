@@ -40,17 +40,18 @@ http.createServer(function(request, response) {
            
             response.writeHead(200, "OK", {'Content-Type': 'application/json'});
             
-            var userData = {name:"name", age:"age"};
-            var member =[userData];
             
+            
+            var member =[];
             dbHelper.showUserInfo(function(rows){
                 for (var i in rows) {
-                    userData.name =rows[i].name;
-                    userData.age =rows[i].age;
+                    var userData = {name:rows[i].name, age:rows[i].age};
+                    // userData.name =rows[i].name;
+                    // userData.age =rows[i].age;
                     // console.log('name: ', rows[i].name);
+                    member.push(userData);
                 }
             });
-            
             
             var json = JSON.stringify({ 
                 member: member, 
