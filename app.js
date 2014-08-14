@@ -4,8 +4,8 @@ var qs = require('querystring');
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'amdin',
-  password : 'admin',
+  user     : 'root',
+  password : 'root',
   database : 'movie_app'
 });
 
